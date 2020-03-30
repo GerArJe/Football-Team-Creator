@@ -3,7 +3,7 @@ export interface Player {
   name: string;
   lastName: string;
   position: SquadNumber;
-  weigth: number;
+  weight: number;
   height: number;
   nationality: string;
   leftFooted: boolean;

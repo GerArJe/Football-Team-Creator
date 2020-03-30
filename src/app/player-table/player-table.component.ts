@@ -11,7 +11,7 @@ import { PlayerService } from '../services/player.service';
 export class PlayerTableComponent implements OnInit {
   public players$: Observable<Player[]>;
   public selectedPlayer: Player;
-  public shwoModal = false;
+  public showModal = false;
 
   constructor(private playerService: PlayerService) {}
 
@@ -20,10 +20,22 @@ export class PlayerTableComponent implements OnInit {
   }
 
   newPlayer() {
-    this.shwoModal = true;
+    this.showModal = true;
     this.selectedPlayer = null;
     setTimeout(() => {
       window.location.replace('#open-modal');
-    }, 0);
+    });
+  }
+
+  editPlayer(player: Player) {
+    this.selectedPlayer = { ...player };
+    this.showModal = true;
+    setTimeout(() => {
+      window.location.replace('#open-modal');
+    });
+  }
+
+  closeDialog() {
+    this.showModal = false;
   }
 }
