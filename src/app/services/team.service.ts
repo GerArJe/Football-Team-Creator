@@ -12,7 +12,7 @@ export const TeamsTableHeaders = ['Name', 'Country', 'Players'];
 export class TeamService {
   private teamDb: AngularFireList<Team>;
 
-  constructor(private db: AngularFireDatabase) { 
+  constructor(private db: AngularFireDatabase) {
     this.teamDb = this.db.list('/teams', ref => ref.orderByChild('name'));
   }
 
@@ -34,7 +34,7 @@ export class TeamService {
 
   editTeam(newTeamData) {
     const $key = newTeamData.$key;
-    delete(newTeamData.$key);
+    delete newTeamData.$key;
     this.db.list('/teams').update($key, newTeamData);
   }
 }
